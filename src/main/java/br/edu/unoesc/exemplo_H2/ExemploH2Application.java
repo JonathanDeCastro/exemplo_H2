@@ -40,23 +40,23 @@ public class ExemploH2Application {
 						)
 					);
 			
-			Livro l = new Livro(null, "O Senhor dos an√©is", 42, "Tolkien");
+			Livro l = new Livro(null, "O Senhor dos anÈis", 42, "Tolkien");
 			l = repositorio.save(l);
 			
-			// Exemplo de tratamento de exce√ß√µes
+			// Exemplo de tratamento de exceÁıes
 			try {
 				//System.out.println(10/0);
 				repositorio.deleteById(20L);
 			}catch (EmptyResultDataAccessException e) {
-				System.out.println("\n>>> Erro! Registro n√£o encontrado! <<<\n");
+				System.out.println("\n>>> Erro! Registro n„o encontrado! <<<\n");
 			}catch (RuntimeException e) {
-				System.out.println("\n>>> Erro de execu√ß√£o! <<<\n");
+				System.out.println("\n>>> Erro de execuÁ„o! <<<\n");
 			}
 			
 			// Exemplo de utiliza√ß√£o da classe Optional
 			Optional<Livro> p = repositorio.findById(2L);
 			if (p.isEmpty()) {
-				System.out.println("\n>>> Registro n√£o encontrado! <<<\n");
+				System.out.println("\n>>> Registro n„o encontrado! <<<\n");
 			} else {
 				System.out.println(p);				
 				System.out.println(p.get());				
@@ -64,7 +64,7 @@ public class ExemploH2Application {
 			}
 			
 			Livro a = repositorio.findById(15L).get();
-			a.setTitulo("Em busca dos an√©is perdidos");
+			a.setTitulo("Em busca dos anÈis perdidos");
 			a.setPaginas(100);
 			a.setAutor("Fulano da Silva");
 			repositorio.save(a);
@@ -72,7 +72,7 @@ public class ExemploH2Application {
 			// Recupera todos os registros
 			System.out.println(repositorio.findAll());
 			
-			// Exemplos de m√©todos de busca
+			// Exemplos de mÈtodos de busca
 			for (var livro: repositorio.findByAutorContainingIgnoreCase("tolkien")) {
 				System.out.println(livro);
 			}
